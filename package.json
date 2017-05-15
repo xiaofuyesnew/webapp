@@ -17,6 +17,7 @@
     "plugins": {
       "cordova-plugin-whitelist": {}
     },
+<<<<<<< HEAD
     "platforms": [
       "android"
     ]
@@ -26,3 +27,24 @@
     "gulp": "^3.9.1"
   }
 }
+=======
+    "author": "Apache Cordova Team",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "cordova-android": "^6.2.3",
+        "cordova-browser": "^4.1.0",
+        "cordova-ios": "^4.4.0",
+        "cordova-plugin-whitelist": "^1.3.2"
+    },
+    "cordova": {
+        "plugins": {
+            "cordova-plugin-whitelist": {}
+        },
+        "platforms": [
+            "android",
+            "browser",
+            "ios"
+        ]
+    }
+}
+>>>>>>> 5931ceb3373168d9c28a7550818919c90b5601e0
