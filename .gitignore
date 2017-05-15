@@ -1,3 +1,5 @@
 /node_modules
 /platforms/**/*
 /plugins/**/*
+!/platforms/README.md
+!/plugins/README.md
