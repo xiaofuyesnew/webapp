@@ -118,7 +118,3 @@ gulp.task('dev', [], () => {
 gulp.task('build', [], () => {
 
 })
-
-gulp.task('watch', () => {
-    gulp.watch('src/style/sass/*.scss', ['sass:dev'])
-})
