@@ -120,7 +120,5 @@ gulp.task('build', [], () => {
 })
 
 gulp.task('watch', () => {
-    gulp.watch('src/style/sass/*.scss', (e) => {
-        console.log(`File ${e.path} was ${e.type}, running tasks...`)
-    })
+    gulp.watch('src/style/sass/*.scss', ['sass:dev'])
 })
