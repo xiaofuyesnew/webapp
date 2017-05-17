@@ -1,3 +1,17 @@
 @import 'reset';
 @import 'common';
 @import 'mixin';
+
+
+body {
+    background: url('../img/login-bg.png') no-repeat;
+    background-size: cover;
+}
+
+.g-bottom {
+    display: -webkit-flex;
+    display: flex;
+    .u-link {
+        color: #fff;
+    }
+}

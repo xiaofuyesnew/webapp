@@ -42,24 +42,28 @@ gulp.task('del:dev', () => {
 })
 
 gulp.task('img:dev', () => {
-    return gulp.src('.src/img/**/*')
+    return gulp.src('./src/img/**/*.{png,jpg,gif}')
         .pipe(gulp.dest('./dev/img'))
         .pipe(reload({ stream: true }))
 })
 
 gulp.task('sass:dev', () => {
-    return gulp.src('./src/style/sass/*.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./dev/css'))
-        .pipe(reload({ stream: true }))
+    return setTimeout(() => {
+        gulp.src('./src/style/sass/*.scss')
+            .pipe(sass().on('error', sass.logError))
+            .pipe(gulp.dest('./dev/css'))
+            .pipe(reload({ stream: true }))
+    }, 500) 
 })
 
 gulp.task('clean:dev', ['sass:dev'], () => {
-    return del([
-        './dev/css/reset.css',
-        './dev/css/common.css',
-        './dev/css/mixin.css'
-    ])
+    return setTimeout(() => {
+        del([
+            './dev/css/reset.css',
+            './dev/css/common.css',
+            './dev/css/mixin.css'
+        ])
+    }, 800)
 })
 
 gulp.task('lib:dev', () => {
@@ -91,17 +95,17 @@ gulp.task('html:dev', () => {
 
 gulp.task('dev', ['img:dev',
         'lib:dev',
-        'clean:dev',
         'js:dev',
         'index:dev',
-        'html:dev'], () => {
+        'html:dev',
+        'clean:dev'], () => {
     browserSync.init({
         server: {
             baseDir: './dev'
         },
         notify: false
     })
-    gulp.watch('.src/img/**/*.*', ['img:dev'])
+    gulp.watch('./src/img/**/*.*', ['img:dev'])
     gulp.watch('./src/lib-dev/**/*.*', ['lib:dev'])
     gulp.watch('./src/style/sass/*.scss', ['clean:dev'])
     gulp.watch('./src/script/*.js', ['js:dev'])
@@ -141,18 +145,22 @@ gulp.task('libcss', () => {
 })
 
 gulp.task('sass', () => {
-    return gulp.src('./src/style/sass/*.scss')
-        .pipe(sass({ outputStyle: 'compressed' })
-            .on('error', sass.logError))
-        .pipe(gulp.dest('./www/css'))
+    return setTimeout(() => {
+        gulp.src('./src/style/sass/*.scss')
+            .pipe(sass({ outputStyle: 'compressed' })
+                .on('error', sass.logError))
+            .pipe(gulp.dest('./www/css'))
+    }, 500)
 })
 
 gulp.task('clean', ['sass'], () => {
-    return del([
-        './www/css/reset.css',
-        './www/css/common.css',
-        './www/css/mixin.css'
-    ])
+    return setTimeout(() => {
+        del([
+            './www/css/reset.css',
+            './www/css/common.css',
+            './www/css/mixin.css'
+        ])
+    }, 800)
 })
 
 gulp.task('index', () => {
