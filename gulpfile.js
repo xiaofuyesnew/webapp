@@ -56,6 +56,8 @@ gulp.task('sass:dev', () => {
 
 gulp.task('clean:dev', ['sass:dev'], () => {
     return del([
+        './dev/css/reset.css',
+        './dev/css/common.css',
         './dev/css/mixin.css'
     ])
 })
@@ -96,7 +98,8 @@ gulp.task('dev', ['img:dev',
     browserSync.init({
         server: {
             baseDir: './dev'
-        }
+        },
+        notify: false
     })
     gulp.watch('.src/img/**/*.*', ['img:dev'])
     gulp.watch('./src/lib-dev/**/*.*', ['lib:dev'])
@@ -144,10 +147,19 @@ gulp.task('sass', () => {
         .pipe(gulp.dest('./www/css'))
 })
 
+gulp.task('clean', ['sass'], () => {
+    return del([
+        './www/css/reset.css',
+        './www/css/common.css',
+        './www/css/mixin.css'
+    ])
+})
+
 gulp.task('index', () => {
     return gulp.src('./src/html/index.html')
         .pipe(htmlReplace({
-            js: 'js/lib.min.js'
+            js: 'js/lib.min.js',
+            css: 'css/style.css'
         }))
         .pipe(htmlmin())
         .pipe(gulp.dest('./www'))
@@ -156,22 +168,16 @@ gulp.task('index', () => {
 gulp.task('html', () => {
     return gulp.src(['./src/html/*.html', '!./src/html/index.html'])
         .pipe(htmlReplace({
-            js: 'js/lib.min.js'
+            js: 'js/lib.min.js',
+            css: 'css/style.css'
         }))
         .pipe(htmlmin())
         .pipe(gulp.dest('./www/html'))
 })
 
-gulp.task('clean', () => {
-    return del([
-        './www/css/mixin.css'
-    ])
-})
-
+gulp.task('build', ['img', 'bundle', 'libcss', 'clean', 'index', 'html'])
 
 /** --- release end --- */
 
 
-gulp.task('build', [], () => {
 
-})
