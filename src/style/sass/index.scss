@@ -1,6 +1,6 @@
-@import 'reset';
-@import 'common';
-@import 'mixin';
+@import 'common/reset';
+@import 'common/common';
+@import 'common/mixin';
 
 
 body {
@@ -9,9 +9,18 @@ body {
 }
 
 .g-bottom {
+    position: fixed;
+    bottom:0;
     display: -webkit-flex;
     display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2vh 0;
     .u-link {
+        width: 35%;
+        text-align: center;
+        line-height: 8vh;
         color: #fff;
+        font-size: 1.2rem;
     }
 }

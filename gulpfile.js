@@ -56,16 +56,6 @@ gulp.task('sass:dev', () => {
     }, 500) 
 })
 
-gulp.task('clean:dev', ['sass:dev'], () => {
-    return setTimeout(() => {
-        del([
-            './dev/css/reset.css',
-            './dev/css/common.css',
-            './dev/css/mixin.css'
-        ])
-    }, 800)
-})
-
 gulp.task('lib:dev', () => {
     return gulp.src('./src/lib-dev/**/*')
         .pipe(gulp.dest('./dev/lib/'))
@@ -95,10 +85,11 @@ gulp.task('html:dev', () => {
 
 gulp.task('dev', ['img:dev',
         'lib:dev',
+        'sass:dev',
         'js:dev',
         'index:dev',
         'html:dev',
-        'clean:dev'], () => {
+        ], () => {
     browserSync.init({
         server: {
             baseDir: './dev'
@@ -107,7 +98,7 @@ gulp.task('dev', ['img:dev',
     })
     gulp.watch('./src/img/**/*.*', ['img:dev'])
     gulp.watch('./src/lib-dev/**/*.*', ['lib:dev'])
-    gulp.watch('./src/style/sass/*.scss', ['clean:dev'])
+    gulp.watch('./src/style/sass/*.scss', ['sass:dev'])
     gulp.watch('./src/script/*.js', ['js:dev'])
     gulp.watch('./src/html/*.html', ['index:dev', 'html:dev'])
 })
@@ -153,16 +144,6 @@ gulp.task('sass', () => {
     }, 500)
 })
 
-gulp.task('clean', ['sass'], () => {
-    return setTimeout(() => {
-        del([
-            './www/css/reset.css',
-            './www/css/common.css',
-            './www/css/mixin.css'
-        ])
-    }, 800)
-})
-
 gulp.task('index', () => {
     return gulp.src('./src/html/index.html')
         .pipe(htmlReplace({
@@ -183,7 +164,7 @@ gulp.task('html', () => {
         .pipe(gulp.dest('./www/html'))
 })
 
-gulp.task('build', ['img', 'bundle', 'libcss', 'clean', 'index', 'html'])
+gulp.task('build', ['img', 'bundle', 'libcss', 'sass', 'index', 'html'])
 
 /** --- release end --- */
 
