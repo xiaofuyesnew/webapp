@@ -148,7 +148,7 @@ gulp.task('index', () => {
     return gulp.src('./src/html/index.html')
         .pipe(htmlReplace({
             js: 'js/lib.min.js',
-            css: 'css/style.css'
+            css: 'css/mint-ui/style.css'
         }))
         .pipe(htmlmin())
         .pipe(gulp.dest('./www'))
@@ -158,7 +158,7 @@ gulp.task('html', () => {
     return gulp.src(['./src/html/*.html', '!./src/html/index.html'])
         .pipe(htmlReplace({
             js: 'js/lib.min.js',
-            css: 'css/style.css'
+            css: 'css/mint-ui/style.css'
         }))
         .pipe(htmlmin())
         .pipe(gulp.dest('./www/html'))
