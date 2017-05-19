@@ -1,16 +1,69 @@
 @import 'common/reset';
-@import 'common/common';
 @import 'common/mixin';
-
+@import 'common/common';
 
 body {
-    background: url('../img/login-bg.png') no-repeat;
-    background-size: cover;
+    @include log-bg;
 }
 
-.g-bottom {
-    position: fixed;
-    bottom:0;
+.app {
+    width: 100vw;
+    height: 90vh;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 10vh;
+}
+
+.m-login {
+    .u-avatar {
+        width: 24vw;
+        height: 24vw;
+        background: rgba(255, 255, 255, .2);
+        border-radius: 50%;
+        margin: 0 auto;
+    }
+    .u-title {
+        font-size: 2.2rem;
+        color: #fff;
+        text-align: center;
+        padding: 3vh 0;
+    }
+    .u-login {
+        width: 65vw;
+        margin: 0 auto;
+        input[type="text"], input[type="password"]{
+            display: block;
+            border: none;
+            outline: none;
+            background: none;
+            color: #fff;
+            margin: 0 auto;
+            font-size: 1.6rem;
+            border-bottom: 1px solid rgba(255, 255, 255, .6);
+            height: 5vh;
+            width: 63vw;
+            padding: 2vh 1vw 1vh;
+        }
+        button {
+            display: block;
+            margin: 10vh auto 0;
+            outline: none;
+            border: none;
+            background: rgba(30, 130, 208, .8);
+            height: 6vh;
+            color: #fff;
+            border-radius: 6vh;
+            width: 100%;
+        }
+        ::-webkit-input-placeholder {
+            color: #fff;
+        }
+    }
+}
+
+.m-links {
     display: -webkit-flex;
     display: flex;
     justify-content: space-between;
@@ -21,6 +74,6 @@ body {
         text-align: center;
         line-height: 8vh;
         color: #fff;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 }

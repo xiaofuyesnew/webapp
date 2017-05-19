@@ -150,7 +150,10 @@ gulp.task('index', () => {
             js: 'js/lib.min.js',
             css: 'css/mint-ui/style.css'
         }))
-        .pipe(htmlmin())
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            removeComments: true
+        }))
         .pipe(gulp.dest('./www'))
 })
 
@@ -160,7 +163,10 @@ gulp.task('html', () => {
             js: 'js/lib.min.js',
             css: 'css/mint-ui/style.css'
         }))
-        .pipe(htmlmin())
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            removeComments: true
+        }))
         .pipe(gulp.dest('./www/html'))
 })
 
