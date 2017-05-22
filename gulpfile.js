@@ -26,6 +26,9 @@ const htmlReplace = require('gulp-html-replace')
 const htmlmin = require('gulp-htmlmin')
 const cleanCss = require('gulp-clean-css')
 const uglifyjs = require('gulp-uglify')
+const webpack = require('webpack')
+const gulpWebpack = require('gulp-webpack')
+const configDev = require('./webpack.config.js')
 
 //browser-sync and its reload
 const browserSync = require('browser-sync').create()
@@ -62,6 +65,12 @@ gulp.task('lib:dev', () => {
         .pipe(reload({ stream: true }))
 })
 
+gulp.task('webpack', () => {
+    return gulp.src('./src/script/index.js')
+        .pipe(gulpWebpack(configDev))
+        .pipe(gulp.dest('./dev/js'))
+})
+
 gulp.task('js:dev', () => {
     return gulp.src('./src/script/*.js')
         .pipe(babel({
@@ -82,6 +91,8 @@ gulp.task('html:dev', () => {
         .pipe(gulp.dest('./dev/html'))
         .pipe(reload({ stream: true }))
 })
+
+gulp.task('test', ['webpack'])
 
 gulp.task('dev', ['img:dev',
         'lib:dev',

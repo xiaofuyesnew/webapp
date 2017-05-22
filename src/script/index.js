@@ -2,9 +2,12 @@
  * 
  * 
  */
-const vue = require('vue')
-const mintui = require('mint-ui')
-const axios = require('axios')
+
+import Vue from 'vue'
+import { Indicator } from 'mint-ui'
+import 'mint-ui/lib/style.css'
+
+Vue.use(Indicator)
 
 var app = new Vue({
     el: '.app',
@@ -19,6 +22,7 @@ var app = new Vue({
             appHeight.style.height = `${viewHeight}px`
         },
         clickButton: () => {
+            Indicator.open('加载中...')
             console.log('ok')
         }
     }
