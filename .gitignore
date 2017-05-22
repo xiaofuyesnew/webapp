@@ -4,6 +4,8 @@
 /platforms/**/*
 /plugins/**/*
 /dev/**/*
+/www/**/*
+!/www/README.md
 !/dev/README.md
 !/platforms/README.md
 !/plugins/README.md
