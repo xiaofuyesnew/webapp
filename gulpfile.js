@@ -25,7 +25,7 @@ const concat = require('gulp-concat')
 const htmlReplace = require('gulp-html-replace')
 const htmlmin = require('gulp-htmlmin')
 const cleanCss = require('gulp-clean-css')
-const uglifyjs = require('gulp-uglifyjs')
+const uglifyjs = require('gulp-uglify')
 
 //browser-sync and its reload
 const browserSync = require('browser-sync').create()
