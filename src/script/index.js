@@ -10,10 +10,10 @@ var app = new Vue({
     },
     methods: {
         setScreen: () => {
-            var viewHeight = document.documentElement.clientHeight,
-                app = document.getElementsByClassName('app')[0]
+            var viewHeight = innerHeight,
+                appHeight = document.getElementsByClassName('app')[0]
 
-            app.style.height = `${viewHeight}px`
+            appHeight.style.height = `${viewHeight}px`
         }
     }
 })
