@@ -126,6 +126,15 @@ gulp.task('bundle', () => {
         .pipe(gulp.dest('./www/js'))
 })
 
+gulp.task('js', () => {
+    return gulp.src('./src/script/*.js')
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(uglifyjs())
+        .pipe(gulp.dest('./www/js'))
+})
+
 gulp.task('libcss', () => {
     return gulp.src('./src/lib/**/*.css')
         .pipe(cleanCss({
@@ -170,7 +179,7 @@ gulp.task('html', () => {
         .pipe(gulp.dest('./www/html'))
 })
 
-gulp.task('build', ['img', 'bundle', 'libcss', 'sass', 'index', 'html'])
+gulp.task('build', ['img', 'bundle', 'js', 'libcss', 'sass', 'index', 'html'])
 
 /** --- release end --- */
 
