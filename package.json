@@ -1,24 +1,24 @@
 {
-  "name": "com.btten.fupin",
-  "displayName": "精准扶贫",
-  "version": "1.0.0",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
-  "main": "index.js",
-  "scripts": {
-    "dev": "gulp del:dev && gulp dev",
-    "build": "gulp del && gulp build"
-  },
-  "author": "Apache Cordova Team",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "cordova-android": "^6.2.3",
-    "cordova-ios": "^4.4.0",
-    "cordova-plugin-whitelist": "^1.3.2"
-  },
-  "cordova": {
-    "plugins": {
-      "cordova-plugin-whitelist": {}
+    "name": "com.btten.fupin",
+    "displayName": "精准扶贫",
+    "version": "1.0.0",
+    "description": "A sample Apache Cordova application that responds to the deviceready event.",
+    "main": "index.js",
+    "scripts": {
+        "dev": "gulp del:dev && gulp dev",
+        "build": "gulp del && gulp build"
     },
+    "author": "Apache Cordova Team",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "cordova-android": "^6.2.3",
+        "cordova-ios": "^4.4.0",
+        "cordova-plugin-whitelist": "^1.3.2"
+    },
+    "cordova": {
+        "plugins": {
+            "cordova-plugin-whitelist": {}
+        },
     "platforms": [
       "android",
       "ios"
