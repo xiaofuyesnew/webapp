@@ -28,7 +28,7 @@ const cleanCss = require('gulp-clean-css')
 const uglifyjs = require('gulp-uglify')
 const webpack = require('webpack')
 const gulpWebpack = require('gulp-webpack')
-const configDev = require('./webpack.dev.config.js')
+const config = require('./webpack.config.js')
 
 //browser-sync and its reload
 const browserSync = require('browser-sync').create()
@@ -61,7 +61,7 @@ gulp.task('sass:dev', () => {
 
 gulp.task('webpack', () => {
     return gulp.src('./src/script/*.js')
-        .pipe(gulpWebpack(configDev, webpack))
+        .pipe(gulpWebpack(config, webpack))
         .pipe(gulp.dest('./dev/js'))
         .pipe(reload({ stream: true }))
 })
