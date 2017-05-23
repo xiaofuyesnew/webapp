@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <!-- security policy data safe config when build-->
+        <!--
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">-->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <!-- build:css -->
+        <link rel="stylesheet" href="lib/mint-ui/style.css">
+        <!-- endbuild -->
+        <link rel="stylesheet" href="css/index.css">
+        <title>登录</title>
+    </head>
+    <body>
+        <div class="app">
+            <div class="m-login">
+                <div class="u-avatar"></div>
+                <div class="u-title">远安县精准扶贫系统</div>
+                <form class="u-login">
+                    <input type="text" placeholder="账号">
+                    <input type="password" placeholder="密码">
+                    <input id="remember" type="checkbox">
+                    <label for="remember">记住密码</label>
+                    <input type="text" placeholder="验证码">
+                    <img src="">
+                    <button v-on:click="clickButton" type="button">登录</button>
+                </form>
+            </div>
+            <div class="m-links">
+                <a class="u-link" href="html/resetpw.html">重置密码</a>
+                <a class="u-link" href="html/forgetpw.html">忘记密码</a>
+            </div>
+        </div>
+
+        <script src="cordova.js"></script>
+        <!-- build:js --
+        <script src="lib/vue.js"></script>
+        <script src="lib/mint-ui/index.js"></script>
+        <script src="lib/axios.js"></script>
+        <script src="lib/chart.js"></script>
+        <!-- endbuild -->
+        <!--<script src="js/index.js"></script>-->
+        <script>
+        </script>
+    </body>
+</html>

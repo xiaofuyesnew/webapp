@@ -1,0 +1,50 @@
+{
+  "name": "com.btten.fupin",
+  "displayName": "精准扶贫",
+  "version": "1.0.0",
+  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp del:dev && gulp dev",
+    "build": "gulp del && gulp build"
+  },
+  "author": "Apache Cordova Team",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "cordova-android": "^6.2.3",
+    "cordova-ios": "^4.4.0",
+    "cordova-plugin-whitelist": "^1.3.2"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {}
+    },
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "devDependencies": {
+    "axios": "^0.16.1",
+    "babel-plugin-component": "^0.9.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "browser-sync": "^2.18.11",
+    "chart.js": "^2.5.0",
+    "css-loader": "^0.28.2",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^3.3.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-webpack": "^1.5.0",
+    "mint-ui": "^2.2.7",
+    "style-loader": "^0.18.0",
+    "vue": "^2.3.3",
+    "webpack": "^2.5.1"
+  }
+}
