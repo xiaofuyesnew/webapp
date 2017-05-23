@@ -59,16 +59,17 @@ gulp.task('sass:dev', () => {
     }, 500) 
 })
 
+gulp.task('webpack', () => {
+    return gulp.src('./src/script/index.js')
+        .pipe(gulpWebpack(configDev, webpack))
+        .pipe(gulp.dest('./dev/js'))
+        .pipe(reload({ stream: true }))
+})
+
 gulp.task('lib:dev', () => {
     return gulp.src('./src/lib-dev/**/*')
         .pipe(gulp.dest('./dev/lib/'))
         .pipe(reload({ stream: true }))
-})
-
-gulp.task('webpack', () => {
-    return gulp.src('./src/script/index.js')
-        .pipe(gulpWebpack(configDev))
-        .pipe(gulp.dest('./dev/js'))
 })
 
 gulp.task('js:dev', () => {
