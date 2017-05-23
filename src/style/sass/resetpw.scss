@@ -1,7 +1,0 @@
-@import 'common/reset';
-@import 'common/mixin';
-@import 'common/common';
-
-body {
-    @include log-bg;
-}
