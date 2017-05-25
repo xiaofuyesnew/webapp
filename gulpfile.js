@@ -26,10 +26,9 @@ const htmlReplace = require('gulp-html-replace')
 const htmlmin = require('gulp-htmlmin')
 const cleanCss = require('gulp-clean-css')
 const uglifyjs = require('gulp-uglify')
-const webpack = require('webpack')
 const gulpWebpack = require('gulp-webpack')
-const configDev = require('./webpack.config.js')
-
+const webpack = require('webpack')
+const config = require('./webpack.config.js')
 //browser-sync and its reload
 const browserSync = require('browser-sync').create()
 const reload = browserSync.reload
@@ -59,13 +58,6 @@ gulp.task('sass:dev', () => {
     }, 500) 
 })
 
-gulp.task('webpack', () => {
-    return gulp.src('./src/script/index.js')
-        .pipe(gulpWebpack(configDev, webpack))
-        .pipe(gulp.dest('./dev/js'))
-        .pipe(reload({ stream: true }))
-})
-
 gulp.task('lib:dev', () => {
     return gulp.src('./src/lib-dev/**/*')
         .pipe(gulp.dest('./dev/lib/'))
@@ -74,8 +66,28 @@ gulp.task('lib:dev', () => {
 
 gulp.task('js:dev', () => {
     return gulp.src('./src/script/*.js')
-        .pipe(babel({
-            presets: ['es2015']
+        .pipe(gulpWebpack({
+            entry: {
+                index: './src/script/index.js'
+            },
+            output: {
+                filename: '[name].js',
+            },
+            module: {
+                loaders: [
+                    {
+                        test: /\.js$/,
+                        loader: 'babel-loader',
+                        query: {
+                            presets: ['es2015']
+                        }
+                    },
+                    {
+                        test: /\.css$/,
+                        loader: 'style-loader!css-loader'
+                    }
+                ]
+            }
         }))
         .pipe(gulp.dest('./dev/js'))
         .pipe(reload({ stream: true }))
@@ -92,8 +104,6 @@ gulp.task('html:dev', () => {
         .pipe(gulp.dest('./dev/html'))
         .pipe(reload({ stream: true }))
 })
-
-gulp.task('test', ['webpack'])
 
 gulp.task('dev', ['img:dev',
         'lib:dev',
