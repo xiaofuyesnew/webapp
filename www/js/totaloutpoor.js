@@ -1,0 +1,1 @@
+"use strict";$(function(){var e={el:$("#app"),setScreen:function(){e.el.css({height:window.innerHeight-20+"px"})}};e.setScreen(),$(".subnav .unit").click(function(){$(".subnav .unit").removeClass("blue"),$(".subnav .unit .bar").addClass("hide"),$(this).addClass("blue"),$(this).children(".bar").removeClass("hide")})});

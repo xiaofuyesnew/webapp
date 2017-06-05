@@ -26,9 +26,7 @@ const htmlReplace = require('gulp-html-replace')
 const htmlmin = require('gulp-htmlmin')
 const cleanCss = require('gulp-clean-css')
 const uglifyjs = require('gulp-uglify')
-const gulpWebpack = require('gulp-webpack')
-const webpack = require('webpack')
-const config = require('./webpack.config.js')
+
 //browser-sync and its reload
 const browserSync = require('browser-sync').create()
 const reload = browserSync.reload
