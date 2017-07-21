@@ -1,1 +1,0 @@
-"use strict";$(function(){var e={el:$("#app"),setScreen:function(){e.el.css({height:window.innerHeight-20+"px"})}};e.setScreen()});

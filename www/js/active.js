@@ -1,1 +1,0 @@
-"use strict";$(function(){var e={el:$("#app"),setScreen:function(){e.el.css({height:window.innerHeight-20+"px"})},getNotice:function(){$(".u-notice").css({background:'url("../image/noticebell-spot.png") no-repeat',"background-size":"28px","background-position":"left center"}),$(".ntc-num").html(6)}};e.setScreen(),e.getNotice()});

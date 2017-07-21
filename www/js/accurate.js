@@ -1,1 +1,144 @@
-"use strict";$(function(){var e={el:$("#app"),setScreen:function(){e.el.css({height:window.innerHeight-20+"px"})},getNotice:function(){$(".u-notice").css({background:'url("../image/noticebell-spot.png") no-repeat',"background-size":"28px","background-position":"0 16px"}),$(".ntc-num").html(6)},appAjax_1:function(){$.ajax({type:"get",url:"http://test.360guanggu.com/yuanan_fupin/api.php/Warn/index?user_id=6",success:function(e){var t=JSON.parse(e);$(".u-num .left .num").html(t.data.batch),$(".u-num .right .num").html(t.data.count)}})}};e.setScreen(),e.getNotice(),e.appAjax_1();var t=echarts.init(document.getElementById("zPie"));$.ajax({type:"get",url:"http://test.360guanggu.com/yuanan_fupin/api.php/Warn/warning?user_id=6",success:function(e){for(var a=[],n=0;n<7;n++)a[n]={value:+JSON.parse(e)[n].num,name:JSON.parse(e)[n].text};t.setOption({series:[{type:"pie",radius:"60%",center:["50%","50%"],data:a,itemStyle:{emphasis:{shadowBlur:10,shadowOffsetX:0,shadowColor:"rgba(0, 0, 0, 0.5)"}}}]})}});var a=echarts.init(document.getElementById("cBar"));$.ajax({type:"get",url:"http://test.360guanggu.com/yuanan_fupin/api.php/Warn/village?user_id=6",success:function(e){for(var t=[],n=[],i=[],r=0;r<117;r++)t[r]=JSON.parse(e)[r].text,i[r]=+JSON.parse(e)[r].family_count,n[r]=+JSON.parse(e)[r].num;t.reverse(),n.reverse(),i.reverse(),a.setOption({legend:{data:["贫困户数","贫困人口数"]},grid:{left:"left",containLabel:!0},xAxis:{type:"value",boundaryGap:[0,.01],position:"top"},yAxis:{type:"category",axisTick:{interval:0},axisLabel:{interval:0},data:t},series:[{name:"贫困户数",type:"bar",data:n},{name:"贫困人口数",type:"bar",data:i}]})}})});
+'use strict';
+
+$(function () {
+    //创建根节点对象
+    var app = {
+        el: $('#app'),
+        setScreen: function setScreen() {
+            app.el.css({ "height": window.innerHeight - 20 + 'px' });
+        },
+        getNotice: function getNotice() {
+            var notice = 1;
+            var ntcNum = 6;
+            if (notice) {
+                $('.u-notice').css({
+                    'background': 'url("../image/noticebell-spot.png") no-repeat',
+                    'background-size': '28px',
+                    'background-position': '0 16px'
+                });
+                if (ntcNum > 9) {
+                    $('.ntc-num').html('');
+                } else {
+                    $('.ntc-num').html(ntcNum);
+                }
+            } else {
+                $('.u-notice').css({
+                    'background': 'url("../../image/noticebell-nospot.png") no-repeat',
+                    'background-size': '28px',
+                    'background-position': '0 16px'
+                });
+            }
+        },
+        appAjax_1: function appAjax_1() {
+            $.ajax({
+                type: "get",
+                url: "http://test.360guanggu.com/yuanan_fupin/api.php/Warn/index?user_id=6",
+                success: function success(data) {
+                    var jsonData = JSON.parse(data);
+                    $('.u-num .left .num').html(jsonData.data.batch);
+                    $('.u-num .right .num').html(jsonData.data.count);
+                }
+            });
+        }
+    };
+
+    //调用方法
+    app.setScreen();
+    app.getNotice();
+
+    //预警批次和人数
+    app.appAjax_1();
+
+    // 基于准备好的dom，初始化echarts实例
+    var zPie = echarts.init(document.getElementById('zPie'));
+
+    $.ajax({
+        type: "get",
+        url: "http://test.360guanggu.com/yuanan_fupin/api.php/Warn/warning?user_id=6",
+        success: function success(data) {
+            var jsonData = [];
+            for (var i = 0; i < 7; i++) {
+                jsonData[i] = { value: +JSON.parse(data)[i].num, name: JSON.parse(data)[i].text };
+            }
+            zPie.setOption({
+                series: [{
+                    type: 'pie',
+                    radius: '60%',
+                    center: ['50%', '50%'],
+                    data: jsonData,
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }]
+            });
+        }
+    });
+
+    var cBar = echarts.init(document.getElementById('cBar'));
+
+    $.ajax({
+        type: "get",
+        url: "http://test.360guanggu.com/yuanan_fupin/api.php/Warn/village?user_id=6",
+        success: function success(data) {
+            var village = [],
+                family = [],
+                persons = [];
+
+            for (var i = 0; i < 117; i++) {
+                village[i] = JSON.parse(data)[i].text;
+                persons[i] = +JSON.parse(data)[i].family_count;
+                family[i] = +JSON.parse(data)[i].num;
+            }
+            village.reverse();
+            family.reverse();
+            persons.reverse();
+
+            cBar.setOption({
+                legend: {
+                    data: ['贫困户数', '贫困人口数']
+                },
+                grid: {
+                    left: 'left',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'value',
+                    boundaryGap: [0, 0.01],
+                    position: 'top'
+                },
+                yAxis: {
+                    type: 'category',
+                    axisTick: {
+                        interval: 0
+                    },
+                    axisLabel: {
+                        interval: 0
+                    },
+                    data: village
+                },
+                series: [{
+                    name: '贫困户数',
+                    type: 'bar',
+                    data: family
+                }, {
+                    name: '贫困人口数',
+                    type: 'bar',
+                    data: persons
+                }]
+            });
+        }
+    });
+});
+
+/**
+接口信息
+精准识别 批次号和预警人数：http://test.360guanggu.com/yuanan_fupin/api.php/Warn/index?user_id=6
+饼图
+http://test.360guanggu.com/yuanan_fupin/api.php/Warn/warning?user_id=6
+柱状图
+http://test.360guanggu.com/yuanan_fupin/api.php/Warn/village?user_id=6
+ */
