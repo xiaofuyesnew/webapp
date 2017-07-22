@@ -7,4 +7,7 @@
 !/dev/README.md
 !/platforms/README.md
 !/plugins/README.md
-/www
+www
+
+package-lock.json
+config.xml
