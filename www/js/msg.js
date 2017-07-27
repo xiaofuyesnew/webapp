@@ -7,8 +7,7 @@ $(function () {
         setScreen: function setScreen() {
             app.el.css({ "height": window.innerHeight - 20 + "px" });
         }
-    };
 
-    //调用方法
-    app.setScreen();
+        //调用方法
+    };app.setScreen();
 });

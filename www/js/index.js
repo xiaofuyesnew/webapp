@@ -74,10 +74,9 @@ $(function () {
                 }, 3000);
             });
         }
-    };
 
-    //调用方法
-    app.setScreen();
+        //调用方法
+    };app.setScreen();
     app.setLocalData();
     app.checkCode();
     app.login();
